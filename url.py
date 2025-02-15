@@ -48,12 +48,9 @@ try:
                 if site_url.startswith('http'):
                     redirects[short_key] = site_url  # 仅存储键值对
     
-    # 写入 JSON 格式的文件，并附带注释
+    # 直接写入 JSON 格式的文件
     with open(redirects_path, 'w', encoding='utf-8') as f:
-        json_content = json.dumps(redirects, ensure_ascii=False, indent=2)
-        json_with_comments = "\n".join([f'  "{k}": "{v}"  // {list(site_mappings.keys())[list(site_mappings.values()).index(k)]}' for k, v in redirects.items()])
-        f.write('{
-' + json_with_comments + '\n}')
+        json.dump(redirects, f, ensure_ascii=False, indent=2)
     print(f"✅ 成功更新 {redirects_path}")
     print(f"📅 更新时间: {time.strftime('%Y-%m-%d %H:%M:%S')}")
     
