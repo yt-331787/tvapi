@@ -46,9 +46,9 @@ try:
                 ext = site.get('ext', {})
                 site_url = ext.get('site', '') if isinstance(ext, dict) else ext
                 if site_url.startswith('http'):
-                    redirects[short_key] = site_url  # 仅存储键值对
+                    redirects[short_key] = {"url": site_url, "comment": key}  # 增加站点中文名注释
     
-    # 直接写入 JSON 格式的文件
+    # 写入 redirects.json
     with open(redirects_path, 'w', encoding='utf-8') as f:
         json.dump(redirects, f, ensure_ascii=False, indent=2)
     print(f"✅ 成功更新 {redirects_path}")
