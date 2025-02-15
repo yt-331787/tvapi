@@ -46,11 +46,22 @@ try:
                 ext = site.get('ext', {})
                 site_url = ext.get('site', '') if isinstance(ext, dict) else ext
                 if site_url.startswith('http'):
-                    redirects[short_key] = {"url": site_url, "comment": key}  # 增加站点中文名注释
+                    redirects[short_key] = site_url  # 直接存储 URL
     
-    # 写入 redirects.json
+    # 写入 redirects.json，并添加注释
     with open(redirects_path, 'w', encoding='utf-8') as f:
-        json.dump(redirects, f, ensure_ascii=False, indent=2)
+        f.write("{\n")
+        for i, (short_key, url) in enumerate(redirects.items()):
+            # 查找对应的中文名
+            chinese_name = next((k for k, v in site_mappings.items() if v == short_key), '')
+            # 写入键值对和注释
+            f.write(f'    "{short_key}": "{url}"  //{chinese_name}')
+            # 如果不是最后一项，添加逗号
+            if i < len(redirects) - 1:
+                f.write(",\n")
+            else:
+                f.write("\n")
+        f.write("}\n")
     print(f"✅ 成功更新 {redirects_path}")
     print(f"📅 更新时间: {time.strftime('%Y-%m-%d %H:%M:%S')}")
     
