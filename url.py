@@ -15,7 +15,7 @@ site_mappings = {
     '欧哥': 'og',
     '小米': 'xm',
     '多多': 'dd',
-    '蜡笔': 'lb',
+    '蜡笔': 'lb2',  # 修改为唯一键，避免覆盖
     '至臻': 'zz',
     '木偶': 'mo',
     '六趣': 'lq',
@@ -48,20 +48,9 @@ try:
                 if site_url.startswith('http'):
                     redirects[short_key] = site_url  # 直接存储 URL
     
-    # 写入 redirects.json，并添加注释
+    # 写入 redirects.json
     with open(redirects_path, 'w', encoding='utf-8') as f:
-        f.write("{\n")
-        for i, (short_key, url) in enumerate(redirects.items()):
-            # 查找对应的中文名
-            chinese_name = next((k for k, v in site_mappings.items() if v == short_key), '')
-            # 写入键值对和注释
-            f.write(f'    "{short_key}": "{url}"  //{chinese_name}')
-            # 如果不是最后一项，添加逗号
-            if i < len(redirects) - 1:
-                f.write(",\n")
-            else:
-                f.write("\n")
-        f.write("}\n")
+        json.dump(redirects, f, ensure_ascii=False, indent=2)
     print(f"✅ 成功更新 {redirects_path}")
     print(f"📅 更新时间: {time.strftime('%Y-%m-%d %H:%M:%S')}")
     
