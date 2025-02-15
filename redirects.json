@@ -1,42 +1,12 @@
 {
-  "lb": {
-    "url": "http://feimaoai.site",
-    "comment": "蜡笔"
-  },
-  "sd": {
-    "url": "http://1.95.79.193",
-    "comment": "闪电"
-  },
-  "og": {
-    "url": "https://woog.nxog.eu.org",
-    "comment": "欧哥"
-  },
-  "xm": {
-    "url": "http://milvdou.fun",
-    "comment": "小米"
-  },
-  "dd": {
-    "url": "https://tv.yydsys.top",
-    "comment": "多多"
-  },
-  "zz": {
-    "url": "https://xiaomiai.site",
-    "comment": "至臻"
-  },
-  "mo": {
-    "url": "http://www.91muou.icu",
-    "comment": "木偶"
-  },
-  "lq": {
-    "url": "https://wp.0v.fit",
-    "comment": "六趣"
-  },
-  "hb": {
-    "url": "http://103.45.162.207:20720",
-    "comment": "虎斑"
-  },
-  "xf": {
-    "url": "http://txfpan.top",
-    "comment": "下饭"
-  }
+  "lb": "http://feimaoai.site",
+  "sd": "http://1.95.79.193",
+  "og": "https://woog.nxog.eu.org",
+  "xm": "http://milvdou.fun",
+  "dd": "https://tv.yydsys.top",
+  "zz": "https://xiaomiai.site",
+  "mo": "http://www.91muou.icu",
+  "lq": "https://wp.0v.fit",
+  "hb": "http://103.45.162.207:20720",
+  "xf": "http://txfpan.top"
 }
