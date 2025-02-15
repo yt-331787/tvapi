@@ -1,0 +1,23 @@
+name: api信息
+
+on:
+  workflow_dispatch:  # 仅手动触发
+
+jobs:
+  update-url:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Fetch new data from API
+        run: |
+          curl -sL "https://tvbox.catvod.com/xs/api.json" -o url.txt
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add url.txt
+          git commit -m "Manual update: Save full JSON to url.txt" || echo "No changes to commit"
+          git push
