@@ -11,10 +11,16 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Fetch API Data and Save to url.txt
-        run: |
-          curl -sL "https://tvbox.catvod.com/xs/api.json" -o url.txt
-          echo "✅ API 数据已保存到 url.txt"
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run Python script
+        run: python url.py
 
       - name: Commit and Push Changes
         env:
