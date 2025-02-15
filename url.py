@@ -37,7 +37,7 @@ try:
     print(f"✅ API 数据已写入 {log_path}")
     
     sites = api_data.get('sites', [])
-    redirects = {}
+    redirects = []
     
     for site in sites:
         name = site.get('name', '')
@@ -46,11 +46,12 @@ try:
                 ext = site.get('ext', {})
                 site_url = ext.get('site', '') if isinstance(ext, dict) else ext
                 if site_url.startswith('http'):
-                    redirects[short_key] = {"url": site_url, "comment": key}  # 增加站点中文名注释
+                    redirects.append(f'  "{short_key}": "{site_url}"  // {key}')
     
     # 写入 redirects.json
     with open(redirects_path, 'w', encoding='utf-8') as f:
-        json.dump(redirects, f, ensure_ascii=False, indent=2)
+        f.write('{
+' + ',\n'.join(redirects) + '\n}')
     print(f"✅ 成功更新 {redirects_path}")
     print(f"📅 更新时间: {time.strftime('%Y-%m-%d %H:%M:%S')}")
     
