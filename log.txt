@@ -2098,8 +2098,12 @@
       "url": "https://iptv.catvod.com/tv.m3u"
     },
     {
-      "name": "catvod.com(备用)",
+      "name": "catvod.com(备用1)",
       "url": "https://live.catvod.com/tv.m3u"
+    },
+    {
+      "name": "catvod.com(备用2)",
+      "url": "https://lives.catvod.com/Sub?type=m3u"
     },
     {
       "name": "catvod.com(hosts)",
