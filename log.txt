@@ -2103,7 +2103,7 @@
     },
     {
       "name": "catvod.com(备用2)",
-      "url": "https://lives.catvod.com/Sub.m3u"
+      "url": "https://lives.catvod.com/Sub?type=m3u"
     },
     {
       "name": "catvod.com(hosts)",
